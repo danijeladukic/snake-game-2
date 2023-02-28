@@ -62,8 +62,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
     }
 
     //on click of a button game starts/restarts
-    const startButton = document.querySelector('button')
-    startButton.addEventListener('click', startGame())
+    const startButton = document.querySelector('.start-button')
+    startButton.addEventListener("click", startGame)
 
     function startGame(){
         
