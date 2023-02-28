@@ -4,6 +4,21 @@
     display: flex;
     flex-wrap: wrap;
     border-style: solid;
+    margin-left: 100px;
+}
+.score{
+    
+    width: fit-content;
+    margin-top: 10px;
+    margin-left: 170px;
+    background-color: lightblue;
+    color: red;
+    border-radius: 30px;
+    padding: 5px;
+}
+.score span{
+    padding-left: 3px;
+    color: green;
 }
 
 .container div{
@@ -18,6 +33,16 @@
 
 .apple{
     background-color: green;
+    border-radius: 50px;
+}
+
+.start-button{
+    margin-left: 150px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: lightblue;
+    border-radius: 30px;
+    padding: 5px;
 }
 
 /* animation when game over */
