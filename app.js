@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     //initialize constants and variables
     const squares = document.querySelectorAll('.container div')
-
+    const gameOverSign = document.querySelector('.game-over')
+    gameOverSign.classList.remove('blink')
     const width = 10
     const speed = 1
 
@@ -32,6 +33,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
             (currentSnake[0]%width === 0 && direction === -1)||
             squares[currentSnake[0]+direction].classList.contains('snake')
         ){
+            gameOverSign.classList.add('blink')
+          
             return clearInterval(interval)
         }
 
@@ -66,10 +69,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
     startButton.addEventListener("click", startGame)
 
     function startGame(){
-        
+      
         //initialize start state of a game
         //clear snake state
-    
+        gameOverSign.classList.remove('blink')
         currentSnake.forEach(el => squares[el].classList.remove('snake'))
         currentSnake =[2,1,0]
         currentSnake.forEach(el => squares[el].classList.add('snake'))

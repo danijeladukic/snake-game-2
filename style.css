@@ -1,3 +1,25 @@
+body{
+    position: relative;
+}
+.game-over{
+    font-weight: 900;
+    color: red;
+    position: absolute;
+    top:120px;
+    left: 150px;
+    display: none;
+}
+
+.blink {
+    display:flex;
+    animation: blinker 1s step-start infinite;
+  }
+  
+  @keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
 .container{
     width:200px;
     height: 200px;
@@ -12,7 +34,6 @@
     margin-top: 10px;
     margin-left: 170px;
     background-color: lightblue;
-    color: red;
     border-radius: 30px;
     padding: 5px;
 }
@@ -45,11 +66,3 @@
     padding: 5px;
 }
 
-/* animation when game over */
-
-
-/* set backgroun and center game */
-
-/* do mobile version */
-
-/* do head and tail round depending on directiong */
