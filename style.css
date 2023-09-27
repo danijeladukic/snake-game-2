@@ -1,12 +1,25 @@
 body{
+    
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    margin:10px;
+    background-color: rgb(192, 192, 192);
 }
 .game-over{
     font-weight: 900;
+    font-size: 2rem;
     color: red;
     position: absolute;
-    top:120px;
-    left: 150px;
+    display: flex;
+    justify-content: center;
+    top:40%;
+    text-align: center;
+    
+    
     display: none;
 }
 
@@ -21,21 +34,23 @@ body{
     }
   }
 .container{
-    width:200px;
-    height: 200px;
+    width:500px;
+    height: 500px;
     display: flex;
     flex-wrap: wrap;
     border-style: solid;
-    margin-left: 100px;
+    
 }
 .score{
     
     width: fit-content;
     margin-top: 10px;
-    margin-left: 170px;
+   
     background-color: lightblue;
     border-radius: 30px;
     padding: 5px;
+    text-align: center;
+    font-size: 1.5rem;
 }
 .score span{
     padding-left: 3px;
@@ -43,8 +58,9 @@ body{
 }
 
 .container div{
-    width: 20px;
-    height: 20px;
+    width: 10%;
+    height: 10%;
+   
     
 }
 
@@ -58,11 +74,57 @@ body{
 }
 
 .start-button{
-    margin-left: 150px;
+    font-size: 2rem;
     margin-bottom: 10px;
     border: none;
-    background-color: lightblue;
+    background-color: rgb(153, 187, 153);
     border-radius: 30px;
     padding: 5px;
 }
 
+.buttons-container{
+
+    border: 1px solid black;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    display: none;
+    margin-top: 80px;
+
+}
+.middle-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.middle-buttons button{
+    margin-top: 3px;
+    text-align: center;
+  
+}
+
+.buttons-container button{
+    background-color: rgb(237, 237, 98);
+    border-radius: 25px;
+    border: none;
+    font-size:2rem;
+}
+
+@media screen and (max-width: 768px){
+    body .container{
+        width:400px;
+        height: 400px;
+    }
+    .buttons-container{
+        display:flex;
+    }    
+}
+@media screen and (max-width: 480px){
+    body .container{
+        width:300px;
+        height: 300px;
+    }
+  
+}

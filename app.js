@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const squares = document.querySelectorAll('.container div')
     const gameOverSign = document.querySelector('.game-over')
     gameOverSign.classList.remove('blink')
+
+    const block = document.querySelector('.container div')
+  
     const width = 10
     const speed = 1
 
@@ -54,7 +57,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
             currentSnake.push(tail)
 
             randomApple()
-            score++
+            score = (score+1)*10
             scoreDisplay.innerText= score
 
             clearInterval(interval)
@@ -92,6 +95,32 @@ document.addEventListener("DOMContentLoaded", ()=>{
         interval = setInterval(moveOutcomes, intervalTime)
 
     }
+    //left button click
+    const left = document.querySelector('.left');
+    left.addEventListener("click",()=>{
+        squares[currentIndex].classList.remove('snake')
+        direction = -1
+    });
+    //right button click
+    const right = document.querySelector('.right');
+    right.addEventListener("click",()=>{
+        squares[currentIndex].classList.remove('snake')
+        direction = 1
+    });
+    //down button click
+    const down = document.querySelector('.down');
+    down.addEventListener("click",()=>{
+        squares[currentIndex].classList.remove('snake')
+        direction = +width 
+    });
+    //up button click
+    const up = document.querySelector('.up');
+    up.addEventListener("click",()=>{
+        squares[currentIndex].classList.remove('snake')
+        direction = -width
+    });
+   
+
 
     //document event listener on key up->checks if direction changed(up/down/left/right)
     document.addEventListener('keyup', control)
@@ -113,6 +142,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
     }
+  
 
     //function random apple
 
@@ -132,3 +162,4 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 
 })
+
