@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
          //2) case eats apple
         if (squares[currentSnake[0]].classList.contains('apple')){
             squares[currentSnake[0]].classList.remove('apple')
-            squares[currentSnake[currentSnake.length-1]].classList.add('snake')
+            squares[currentSnake[0]].classList.add('snake')
+            // squares[currentSnake[currentSnake.length-1]].classList.add('snake')
             currentSnake.push(tail)
 
             randomApple()
@@ -98,25 +99,25 @@ document.addEventListener("DOMContentLoaded", ()=>{
     //left button click
     const left = document.querySelector('.left');
     left.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
+       
         direction = -1
     });
     //right button click
     const right = document.querySelector('.right');
     right.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
+       
         direction = 1
     });
     //down button click
     const down = document.querySelector('.down');
     down.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
+       
         direction = +width 
     });
     //up button click
     const up = document.querySelector('.up');
     up.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
+       
         direction = -width
     });
    
@@ -152,7 +153,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         appleIndex = Math.floor(Math.random() * squares.length)}
        while(squares[appleIndex].classList.contains('snake'))//in case random apple hits snake
         
-    squares[appleIndex].classList.add('apple')
+        squares[appleIndex].classList.add('apple')
 
     }
 
