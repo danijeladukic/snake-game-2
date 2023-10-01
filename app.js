@@ -23,51 +23,28 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
     const scoreDisplay = document.querySelector('span')
 
-    let currentIndex = 0 //first square
- 
-    //moveOutcomes: 1)empty spot 2)eats apple 3)game ended: hits walls(4 options)/eats itself
+    //event listeners for buttons on phone/tablet
+    //left button click
+    const left = document.querySelector('.left');
+    left.addEventListener("click",()=>{
+        direction = -1
+    });
+    //right button click
+    const right = document.querySelector('.right');
+    right.addEventListener("click",()=>{
+        direction = 1
+    });
+    //down button click
+    const down = document.querySelector('.down');
+    down.addEventListener("click",()=>{
+        direction = +width 
+    });
+    //up button click
+    const up = document.querySelector('.up');
+    up.addEventListener("click",()=>{
+        direction = -width
+    });
 
-    function moveOutcomes(){
-        //3) game ends
-        if(
-            (currentSnake[0]+width >=width*width && direction === width)||
-            (currentSnake[0]%width === width-1 && direction === 1)||
-            (currentSnake[0] < width && direction === -width)||
-            (currentSnake[0]%width === 0 && direction === -1)||
-            squares[currentSnake[0]+direction].classList.contains('snake')
-        ){
-            gameOverSign.classList.add('blink')
-          
-            return clearInterval(interval)
-        }
-
-        //1)snake moves to an empty spot
-        const tail = currentSnake.pop()
-        squares[tail].classList.remove('snake')
-        //squares[currentSnake[currentSnake.length-1]].classList.remove('snake')
-
-        currentSnake.unshift(currentSnake[0]+direction)
-
-        squares[currentSnake[0]].classList.add('snake')//control move under case 2)
-
-         //2) case eats apple
-        if (squares[currentSnake[0]].classList.contains('apple')){
-            squares[currentSnake[0]].classList.remove('apple')
-            squares[currentSnake[currentSnake.length-1]].classList.add('snake')
-            currentSnake.push(tail)
-
-            randomApple()
-            score = (score+1)*10
-            scoreDisplay.innerText= score
-
-            clearInterval(interval)
-            intervalTime*= speed
-            interval = setInterval(moveOutcomes,intervalTime)
-            
-        }
-    }
-
-    //on click of a button game starts/restarts
     const startButton = document.querySelector('.start-button')
     startButton.addEventListener("click", startGame)
 
@@ -95,38 +72,49 @@ document.addEventListener("DOMContentLoaded", ()=>{
         interval = setInterval(moveOutcomes, intervalTime)
 
     }
-    //left button click
-    const left = document.querySelector('.left');
-    left.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
-        direction = -1
-    });
-    //right button click
-    const right = document.querySelector('.right');
-    right.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
-        direction = 1
-    });
-    //down button click
-    const down = document.querySelector('.down');
-    down.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
-        direction = +width 
-    });
-    //up button click
-    const up = document.querySelector('.up');
-    up.addEventListener("click",()=>{
-        squares[currentIndex].classList.remove('snake')
-        direction = -width
-    });
-   
 
+    //moveOutcomes: 1)empty spot 2)eats apple 3)game ended: hits walls(4 options)/eats itself
+
+    function moveOutcomes(){
+        //2) case eats apple
+        if (squares[currentSnake[0]].classList.contains('apple')){
+            squares[currentSnake[0]].classList.remove('apple')
+            squares[currentSnake[currentSnake.length-1]].classList.add('snake')
+            currentSnake.push(tail)
+
+            randomApple()
+            score = (score+1)*10
+            scoreDisplay.innerText= score
+
+            clearInterval(interval)
+            intervalTime*= speed
+            interval = setInterval(moveOutcomes,intervalTime)
+            
+        }
+        //3) game ends
+        if(
+            (currentSnake[0]+width >=width*width && direction === width)||
+            (currentSnake[0]%width === width-1 && direction === 1)||
+            (currentSnake[0] < width && direction === -width)||
+            (currentSnake[0]%width === 0 && direction === -1)||
+            squares[currentSnake[0]+direction].classList.contains('snake')
+        ){
+            gameOverSign.classList.add('blink')
+            return clearInterval(interval)
+        }
+
+        //1)snake moves to an empty spot
+        const tail = currentSnake.pop()
+        squares[tail].classList.remove('snake')
+        currentSnake.unshift(currentSnake[0]+direction)
+        squares[currentSnake[0]].classList.add('snake')  
+    }
 
     //document event listener on key up->checks if direction changed(up/down/left/right)
     document.addEventListener('keyup', control)
 
     function control(e){
-        squares[currentIndex].classList.remove('snake') //controlna tocka
+        // squares[currentIndex].classList.remove('snake') //controlna tocka
 
         if(e.keyCode === 37){
             direction = -1
@@ -142,24 +130,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }
 
     }
-  
-
     //function random apple
-
     function randomApple(){
     
        do{
         appleIndex = Math.floor(Math.random() * squares.length)}
-       while(squares[appleIndex].classList.contains('snake'))//in case random apple hits snake
+       while(squares[appleIndex].classList.contains('snake')) //in case random apple hits snake
         
-    squares[appleIndex].classList.add('apple')
+        squares[appleIndex].classList.add('apple')
 
     }
-
-    //animation when game over
-    
-
-
 
 })
 
